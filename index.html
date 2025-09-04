@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz: ความสัมพันธ์ระหว่างบุคคล</title>
+  <style>
+    body { font-family: Tahoma, sans-serif; background: #f0f8f5; text-align:center; }
+    .scenario { background:#fff; padding:20px; margin:20px auto; width:80%; border-radius:12px; }
+    button { margin:10px; padding:10px 15px; border:none; border-radius:8px; background:#4CAF50; color:#fff; cursor:pointer; }
+    button:hover { background:#388E3C; }
+    #result { margin-top:20px; background:#e8f5e9; padding:20px; border-radius:10px; display:none; }
+  </style>
+</head>
+<body>
+  <h2>🌟 แบบทดสอบ: ความสัมพันธ์ระหว่างบุคคล 🌟</h2>
+  <p>กรุณากรอกชื่อก่อนเริ่ม</p>
+  <input type="text" id="username" placeholder="ชื่อของคุณ"><br><br>
+  <button onclick="startQuiz()">เริ่มทำแบบทดสอบ</button>
+
+  <div class="scenario" id="scenario" style="display:none;"></div>
+  <div id="result"></div>
+
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbycbOOuaGyyCFvYHzD6to3lwhqbcWmd366CGUuVT0wh9LGGZgXPi5TptvNhEEKc8t9C/exec"; // <-- ใส่ URL Apps Script ที่ได้
+
+    const questions = [
+      { q:"คุณกำลังทำงานกลุ่มอยู่... คุณจะทำอย่างไร?", 
+        options:{ "ก":"พูดแทรกทันที", "ข":"ฟังจนเพื่อนพูดจบแล้วอธิบายสุภาพ", "ค":"เงียบ", "ง":"เมินเฉย" }, 
+        answer:"ข" },
+      { q:"ต่อไปคุณจะทำอย่างไร…", 
+        options:{ "ก":"ขอบคุณเพื่อน", "ข":"บอกว่าโกรธ", "ค":"เดินออก", "ง":"ต่อว่าเพื่อน" }, 
+        answer:"ก" },
+      { q:"คุณคิดว่าการฟังเพื่อนพูดจนจบสำคัญอย่างไร?", 
+        options:{ "ก":"เข้าใจความรู้สึก", "ข":"สร้างความสัมพันธ์", "ค":"ทำให้เพื่อนรู้สึกมีค่า", "ง":"ให้คำแนะนำตรงจุด" }, 
+        answer:"กขคง" },
+      { q:"ถ้าเพื่อนไม่ยอมฟังคุณเลย คุณจะทำอย่างไร?", 
+        options:{ "ก":"อธิบายใหม่อย่างสุภาพ", "ข":"เงียบ", "ค":"เดินออก", "ง":"คิดว่าตัวเองถูกที่สุด" }, 
+        answer:"ก" },
+      { q:"ทักษะการสื่อสารช่วยพัฒนาความสัมพันธ์อย่างไร?", 
+        options:{ "ก":"เข้าใจความคิดความรู้สึก", "ข":"ลดความขัดแย้ง", "ค":"ทำให้เชื่อใจ", "ง":"ร่วมมือทำกิจกรรมได้ดีขึ้น" }, 
+        answer:"กขคง" }
+    ];
+
+    let currentQ = 0, score = 0, total = questions.length, username = "";
+
+    function startQuiz(){
+      username = document.getElementById("username").value.trim();
+      if(!username){ alert("กรุณากรอกชื่อก่อน"); return; }
+      document.getElementById("scenario").style.display = "block";
+      loadQuestion();
+    }
+
+    function loadQuestion(){
+      const q = questions[currentQ];
+      const scenarioDiv = document.getElementById("scenario");
+      scenarioDiv.innerHTML = `
+        <p><strong>คำถาม ${currentQ+1}:</strong> ${q.q}</p>
+        ${Object.keys(q.options).map(
+          key => `<button onclick="chooseAnswer('${key}')">${key}. ${q.options[key]}</button>`
+        ).join("")}
+      `;
+    }
+
+    function chooseAnswer(choice){
+      const correct = questions[currentQ].answer;
+      if(correct.includes(choice)) score++;
+      currentQ++;
+      if(currentQ < total){ loadQuestion(); }
+      else { showResult(); }
+    }
+
+    function showResult(){
+      const resultBox = document.getElementById("result");
+      const scenarioDiv = document.getElementById("scenario");
+      scenarioDiv.style.display = "none";
+      resultBox.style.display = "block";
+
+      let feedback = "";
+      if(score === total) feedback = "🎉 ยอดเยี่ยม! ทักษะการสื่อสารของคุณดีมาก";
+      else if(score >= 3) feedback = "🌟 ดีมาก! คุณมีทักษะพื้นฐานที่ดี แต่ยังพัฒนาได้อีก";
+      else feedback = "🙂 ควรฝึกการฟังและการสื่อสารเชิงบวกมากขึ้น";
+
+      resultBox.innerHTML = `
+        <h3>ผลลัพธ์</h3>
+        <p>คุณ: ${username}</p>
+        <p>คะแนน: ${score} / ${total}</p>
+        <p>${feedback}</p>
+      `;
+
+      // ส่งผลลัพธ์ไป Google Sheets
+      fetch(scriptURL, {
+        method:"POST",
+        body: JSON.stringify({
+          name: username,
+          score: score,
+          total: total,
+          feedback: feedback
+        }),
+        headers: { "Content-Type":"application/json" }
+      });
+    }
+  </script>
+</body>
+</html>
