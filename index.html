@@ -4,61 +4,117 @@
   <meta charset="UTF-8">
   <title>แบบฝึกหัดความสัมพันธ์ระหว่างบุคคล</title>
   <style>
-    body {
-      font-family: "Tahoma", sans-serif;
-      background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
-      text-align: center;
-      margin: 0;
-      padding: 20px;
-    }
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      max-width: 600px;
-      margin: auto;
-      animation: fadeIn 1s ease-in-out;
-    }
-    img {
-      max-width: 100%;
-      border-radius: 10px;
-    }
-    h2 {
-      color: #2c3e50;
-    }
-    .question {
-      text-align: left;
-      margin-top: 20px;
-    }
-    input[type=submit] {
-      background: #3498db;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    input[type=submit]:hover {
-      background: #2980b9;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(30px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    #result {
-      margin-top: 30px;
-      padding: 20px;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      display: none;
-    }
-    #result img {
-      max-width: 250px;
-      margin-top: 15px;
-    }
+   body {
+  font-family: "Tahoma", sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Card หลัก */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  max-width: 600px;
+  width: 100%;            /* ✅ ยืดเต็มความกว้าง */
+  margin: auto;
+  animation: fadeIn 1s ease-in-out;
+  box-sizing: border-box; /* ✅ ป้องกัน padding ดันเกิน */
+}
+
+img {
+  max-width: 100%;
+  border-radius: 10px;
+  height: auto;           /* ✅ ให้ปรับอัตราส่วนอัตโนมัติ */
+}
+
+h2 {
+  color: #2c3e50;
+  font-size: 1.5rem;       /* ✅ ขนาดที่อ่านง่ายบนมือถือ */
+}
+
+.question {
+  text-align: left;
+  margin-top: 20px;
+}
+
+input[type=submit] {
+  background: #3498db;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;             /* ✅ ปุ่มเต็มจอบนมือถือ */
+  max-width: 300px;        /* จำกัดไม่ให้ใหญ่เกินบน desktop */
+  margin-top: 15px;
+}
+
+input[type=submit]:hover {
+  background: #2980b9;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* ส่วนผลลัพธ์ */
+#result {
+  margin-top: 30px;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  display: none;
+}
+
+#result img {
+  max-width: 250px;
+  margin-top: 15px;
+  width: 100%;             /* ✅ ยืดให้พอดีมือถือ */
+  height: auto;
+}
+
+/* ✅ Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  input[type=submit] {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1rem;
+  }
+
+  .question {
+    font-size: 14px;
+  }
+
+  input[type=submit] {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
   </style>
 </head>
 <body>
