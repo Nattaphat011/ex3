@@ -1,104 +1,96 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <title>Quiz: ความสัมพันธ์ระหว่างบุคคล</title>
-  <style>
-    body { font-family: Tahoma, sans-serif; background: #f0f8f5; text-align:center; }
-    .scenario { background:#fff; padding:20px; margin:20px auto; width:80%; border-radius:12px; }
-    button { margin:10px; padding:10px 15px; border:none; border-radius:8px; background:#4CAF50; color:#fff; cursor:pointer; }
-    button:hover { background:#388E3C; }
-    #result { margin-top:20px; background:#e8f5e9; padding:20px; border-radius:10px; display:none; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สถานการณ์การทำงานกลุ่ม</title>
+<style>
+  body { font-family: "Prompt", sans-serif; background: #f4f8fb; margin: 0; padding: 20px; text-align: center; }
+  h2 { color: #333; }
+  .choices { margin: 20px 0; }
+  label { display: block; margin: 10px; padding: 10px; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer; transition: 0.2s; }
+  label:hover { background: #eaf6ff; }
+  button { padding: 10px 20px; border: none; background: #4caf50; color: white; font-size: 16px; border-radius: 6px; cursor: pointer; }
+  button:hover { background: #45a049; }
+  .result { margin-top: 30px; padding: 20px; border-radius: 10px; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+  .result img { max-width: 200px; margin-top: 15px; }
+</style>
 </head>
 <body>
-  <h2>🌟 แบบทดสอบ: ความสัมพันธ์ระหว่างบุคคล 🌟</h2>
-  <p>กรุณากรอกชื่อก่อนเริ่ม</p>
-  <input type="text" id="username" placeholder="ชื่อของคุณ"><br><br>
-  <button onclick="startQuiz()">เริ่มทำแบบทดสอบ</button>
 
-  <div class="scenario" id="scenario" style="display:none;"></div>
-  <div id="result"></div>
+<h2>
+  ขณะนี้คุณกำลังทำงานกลุ่มอยู่กับเพื่อนในกลุ่ม<br>
+  แล้วมีเพื่อนในกลุ่มพูดอะไรบางอย่างที่ทำให้คุณรู้สึกไม่เห็นด้วย<br>
+  คุณจะทำอย่างไรหากเกิดเหตุการณ์นี้?
+</h2>
 
-  <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbycbOOuaGyyCFvYHzD6to3lwhqbcWmd366CGUuVT0wh9LGGZgXPi5TptvNhEEKc8t9C/exec"; // <-- ใส่ URL Apps Script ที่ได้
+<div class="choices">
+  <h3>การฟัง</h3>
+  <label><input type="radio" name="listen" value="ฟังจนจบ"> ฟังจนจบ</label>
+  <label><input type="radio" name="listen" value="แทรกทันที"> แทรกทันที</label>
+  <label><input type="radio" name="listen" value="เดินหนี"> เดินหนี</label>
 
-    const questions = [
-      { q:"คุณกำลังทำงานกลุ่มอยู่... คุณจะทำอย่างไร?", 
-        options:{ "ก":"พูดแทรกทันที", "ข":"ฟังจนเพื่อนพูดจบแล้วอธิบายสุภาพ", "ค":"เงียบ", "ง":"เมินเฉย" }, 
-        answer:"ข" },
-      { q:"ต่อไปคุณจะทำอย่างไร…", 
-        options:{ "ก":"ขอบคุณเพื่อน", "ข":"บอกว่าโกรธ", "ค":"เดินออก", "ง":"ต่อว่าเพื่อน" }, 
-        answer:"ก" },
-      { q:"คุณคิดว่าการฟังเพื่อนพูดจนจบสำคัญอย่างไร?", 
-        options:{ "ก":"เข้าใจความรู้สึก", "ข":"สร้างความสัมพันธ์", "ค":"ทำให้เพื่อนรู้สึกมีค่า", "ง":"ให้คำแนะนำตรงจุด" }, 
-        answer:"กขคง" },
-      { q:"ถ้าเพื่อนไม่ยอมฟังคุณเลย คุณจะทำอย่างไร?", 
-        options:{ "ก":"อธิบายใหม่อย่างสุภาพ", "ข":"เงียบ", "ค":"เดินออก", "ง":"คิดว่าตัวเองถูกที่สุด" }, 
-        answer:"ก" },
-      { q:"ทักษะการสื่อสารช่วยพัฒนาความสัมพันธ์อย่างไร?", 
-        options:{ "ก":"เข้าใจความคิดความรู้สึก", "ข":"ลดความขัดแย้ง", "ค":"ทำให้เชื่อใจ", "ง":"ร่วมมือทำกิจกรรมได้ดีขึ้น" }, 
-        answer:"กขคง" }
-    ];
+  <h3>การพูดคุย</h3>
+  <label><input type="radio" name="speak" value="พูดคุยสุภาพ"> พูดคุยสุภาพ</label>
+  <label><input type="radio" name="speak" value="พูดคุยไม่สุภาพ"> พูดคุยไม่สุภาพ</label>
 
-    let currentQ = 0, score = 0, total = questions.length, username = "";
+  <h3>การปิดท้าย</h3>
+  <label><input type="radio" name="thank" value="ขอบคุณ"> ขอบคุณ</label>
+  <label><input type="radio" name="thank" value="ไม่ขอบคุณ"> ไม่ขอบคุณ</label>
+</div>
 
-    function startQuiz(){
-      username = document.getElementById("username").value.trim();
-      if(!username){ alert("กรุณากรอกชื่อก่อน"); return; }
-      document.getElementById("scenario").style.display = "block";
-      loadQuestion();
+<button onclick="showResult()">ส่งคำตอบ</button>
+
+<div class="result" id="result"></div>
+
+<script>
+  // 🔗 URL Google Apps Script ของคุณ (Web App)
+  const SHEET_URL = "https://script.google.com/macros/s/AKfycbyk4W0hPakUS0VLDszsfBb1suBFGhjKMp_276mzakCxacehp12BbckFdpeVr-IsLNz-/exec";
+
+  function showResult() {
+    const listen = document.querySelector('input[name="listen"]:checked')?.value;
+    const speak = document.querySelector('input[name="speak"]:checked')?.value;
+    const thank = document.querySelector('input[name="thank"]:checked')?.value;
+    const resultDiv = document.getElementById("result");
+
+    if (!listen || !speak || !thank) {
+      alert("กรุณาเลือกทุกข้อก่อนส่งคำตอบ");
+      return;
     }
 
-    function loadQuestion(){
-      const q = questions[currentQ];
-      const scenarioDiv = document.getElementById("scenario");
-      scenarioDiv.innerHTML = `
-        <p><strong>คำถาม ${currentQ+1}:</strong> ${q.q}</p>
-        ${Object.keys(q.options).map(
-          key => `<button onclick="chooseAnswer('${key}')">${key}. ${q.options[key]}</button>`
-        ).join("")}
-      `;
+    let resultText = "";
+    let imgSrc = "";
+
+    if (listen === "ฟังจนจบ" && speak === "พูดคุยสุภาพ" && thank === "ขอบคุณ") {
+      resultText = "ยอดเยี่ยมมาก! คุณเลือกใช้วิธีสื่อสารเชิงบวกที่ช่วยให้ปัญหาคลี่คลาย และทำให้ความสัมพันธ์ดีกว่าเดิม";
+      imgSrc = "https://cdn-icons-png.flaticon.com/512/190/190411.png";
+    } 
+    else if (listen === "ฟังจนจบ" && speak === "พูดคุยสุภาพ" && thank === "ไม่ขอบคุณ") {
+      resultText = "ดีมากที่คุณฟังจนจบและคุยด้วยน้ำเสียงสุภาพ ลองเพิ่มคำขอบคุณเพื่อให้บรรยากาศนุ่มนวลขึ้นอีกได้นะ";
+      imgSrc = "https://cdn-icons-png.flaticon.com/512/190/190422.png";
+    } 
+    else if (listen === "แทรกทันที" || listen === "เดินหนี") {
+      resultText = "บางครั้งอารมณ์อาจทำให้เราอยากตอบโต้ทันที แต่ถ้าลองฟังให้จบและพูดคุยด้วยเหตุผล ความสัมพันธ์จะดีขึ้นมาก";
+      imgSrc = "https://cdn-icons-png.flaticon.com/512/463/463612.png";
+    } 
+    else {
+      resultText = "คุณมีวิธีคิดที่น่าสนใจ ลองพิจารณาการฟังและการสื่อสารเชิงบวกเพื่อเสริมความเข้าใจ";
+      imgSrc = "https://cdn-icons-png.flaticon.com/512/565/565340.png";
     }
 
-    function chooseAnswer(choice){
-      const correct = questions[currentQ].answer;
-      if(correct.includes(choice)) score++;
-      currentQ++;
-      if(currentQ < total){ loadQuestion(); }
-      else { showResult(); }
-    }
+    resultDiv.innerHTML = `<p>${resultText}</p><img src="${imgSrc}" alt="result">`;
 
-    function showResult(){
-      const resultBox = document.getElementById("result");
-      const scenarioDiv = document.getElementById("scenario");
-      scenarioDiv.style.display = "none";
-      resultBox.style.display = "block";
+    // ส่งข้อมูลไป Google Sheets
+    fetch(SHEET_URL, {
+      method: "POST",
+      body: JSON.stringify({ choice1: listen, choice2: speak, choice3: thank, result: resultText }),
+      headers: { "Content-Type": "application/json" }
+    })
+    .then(res => res.text())
+    .then(txt => console.log("✅ Saved to Google Sheets:", txt))
+    .catch(err => console.error("❌ Error:", err));
+  }
+</script>
 
-      let feedback = "";
-      if(score === total) feedback = "🎉 ยอดเยี่ยม! ทักษะการสื่อสารของคุณดีมาก";
-      else if(score >= 3) feedback = "🌟 ดีมาก! คุณมีทักษะพื้นฐานที่ดี แต่ยังพัฒนาได้อีก";
-      else feedback = "🙂 ควรฝึกการฟังและการสื่อสารเชิงบวกมากขึ้น";
-
-      resultBox.innerHTML = `
-        <h3>ผลลัพธ์</h3>
-        <p>คุณ: ${username}</p>
-        <p>คะแนน: ${score} / ${total}</p>
-        <p>${feedback}</p>
-      `;
-
-      // ส่งผลลัพธ์ไป Google Sheets
-      fetch(scriptURL, {
-        method:"POST",
-        body: JSON.stringify({
-          name: username,
-          score: score,
-          total: total,
-          feedback: feedback
-        }),
-        headers: { "Content-Type":"application/json" }
-      });
-    }
-  </script>
 </body>
 </html>
