@@ -177,12 +177,16 @@ document.getElementById("quizForm").addEventListener("submit", function(e) {
   e.preventDefault();
 
   const formData = new FormData(this);
+  const choices = Object.fromEntries(formData.entries());
+  const data = {
+    choice1: choices.choice1 || "",
+    choice2: choices.choice2 || "",
+    choice3: choices.choice3 || "",
+    choice4: choices.choice4 || "",
+    choice5: choices.choice5 || ""
+  };
+  console.log("Form Data:", data);
 
-  const data = Object.fromEntries(formData.entries()); // แปลง FormData เป็น JSON
-data.feedback = feedback; // เพิ่ม feedback
-  // =============================
-  // 🔹 ตัดสินใจ feedback + รูป
-  // =============================
   let feedback = "";
   let image = "";
 
@@ -213,20 +217,20 @@ data.feedback = feedback; // เพิ่ม feedback
   // =============================
   formData.append("feedback", feedback); // เพิ่ม feedback เข้าไปใน FormData
 
-  fetch(scriptURL, { 
+fetch(scriptURL, { 
   method: "POST", 
   body: JSON.stringify(data), 
   headers: { 'Content-Type': 'application/json' } 
 })
-    .then(res => res.json())
-    .then(res => {
-      console.log("Success:", res);
-      alert("ส่งข้อมูลสำเร็จ ขอบคุณที่ร่วมทำแบบฝึกหัด!");
-    })
-    .catch(err => {
-      console.error("Error:", err);
-      alert("เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง");
-    });
+.then(res => res.json())
+.then(res => {
+  console.log("Success:", res);
+  alert("ส่งข้อมูลสำเร็จ ขอบคุณที่ร่วมทำแบบฝึกหัด!");
+})
+.catch(err => {
+  console.error("Error:", err);
+  alert("เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง");
+});
 });
 </script>
 </body>
