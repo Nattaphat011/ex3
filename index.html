@@ -177,8 +177,9 @@ document.getElementById("quizForm").addEventListener("submit", function(e) {
   e.preventDefault();
 
   const formData = new FormData(this);
-  const choices = Object.fromEntries(formData.entries());
 
+  const data = Object.fromEntries(formData.entries()); // แปลง FormData เป็น JSON
+data.feedback = feedback; // เพิ่ม feedback
   // =============================
   // 🔹 ตัดสินใจ feedback + รูป
   // =============================
@@ -212,7 +213,11 @@ document.getElementById("quizForm").addEventListener("submit", function(e) {
   // =============================
   formData.append("feedback", feedback); // เพิ่ม feedback เข้าไปใน FormData
 
-  fetch(scriptURL, { method: "POST", body: JSON.stringify(data), headers: { 'Content-Type': 'application/json' } })
+  fetch(scriptURL, { 
+  method: "POST", 
+  body: JSON.stringify(data), 
+  headers: { 'Content-Type': 'application/json' } 
+})
     .then(res => res.json())
     .then(res => {
       console.log("Success:", res);
