@@ -1,238 +1,78 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <title>แบบฝึกหัดความสัมพันธ์ระหว่างบุคคล</title>
-  <style>
-   body {
-  font-family: "Tahoma", sans-serif;
-  background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
-  text-align: center;
-  margin: 0;
-  padding: 20px;
-}
-
-/* Card หลัก */
-.card {
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  max-width: 600px;
-  width: 100%;            /* ✅ ยืดเต็มความกว้าง */
-  margin: auto;
-  animation: fadeIn 1s ease-in-out;
-  box-sizing: border-box; /* ✅ ป้องกัน padding ดันเกิน */
-}
-
-img {
-  max-width: 100%;
-  border-radius: 10px;
-  height: auto;           /* ✅ ให้ปรับอัตราส่วนอัตโนมัติ */
-}
-
-h2 {
-  color: #2c3e50;
-  font-size: 1.5rem;       /* ✅ ขนาดที่อ่านง่ายบนมือถือ */
-}
-
-.question {
-  text-align: left;
-  margin-top: 20px;
-}
-
-input[type=submit] {
-  background: #3498db;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  width: 100%;             /* ✅ ปุ่มเต็มจอบนมือถือ */
-  max-width: 300px;        /* จำกัดไม่ให้ใหญ่เกินบน desktop */
-  margin-top: 15px;
-}
-
-input[type=submit]:hover {
-  background: #2980b9;
-}
-
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(30px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-/* ส่วนผลลัพธ์ */
-#result {
-  margin-top: 30px;
-  padding: 20px;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  display: none;
-}
-
-#result img {
-  max-width: 250px;
-  margin-top: 15px;
-  width: 100%;             /* ✅ ยืดให้พอดีมือถือ */
-  height: auto;
-}
-
-/* ✅ Responsive Design */
-@media (max-width: 768px) {
-  body {
-    padding: 10px;
-  }
-
-  .card {
-    padding: 15px;
-  }
-
-  h2 {
-    font-size: 1.2rem;
-  }
-
-  input[type=submit] {
-    font-size: 14px;
-    padding: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  h2 {
-    font-size: 1rem;
-  }
-
-  .question {
-    font-size: 14px;
-  }
-
-  input[type=submit] {
-    font-size: 14px;
-    padding: 8px;
-  }
-}
-
-  </style>
+<meta charset="UTF-8">
+<title>Quiz Form</title>
 </head>
 <body>
- <div class="card">
-    <h2>สถานการณ์จำลอง</h2>
-    <p>
-      ขณะนี้คุณกำลังทำงานกลุ่มอยู่กับเพื่อนในกลุ่ม แล้วมีเพื่อนในกลุ่มพูดอะไรบางอย่างที่ทำให้คุณรู้สึกไม่เห็นด้วย 
-      คุณจะทำอย่างไรหากเกิดเหตุการณ์นี้?
-    </p>
 
-    <img src="https://v4i.rweb-images.com/www.thescreenology.com/images/editor/%e0%b9%80%e0%b9%80%e0%b8%81%e0%b9%89%e0%b9%84%e0%b8%821.png" 
-         alt="การทำงานกลุ่ม" style="max-width:400px;">
+<form id="quizForm">
+  <label>Choice 1: <input name="choice1" /></label><br>
+  <label>Choice 2: <input name="choice2" /></label><br>
+  <label>Choice 3: <input name="choice3" /></label><br>
+  <label>Choice 4: <input name="choice4" /></label><br>
+  <label>Choice 5: <input name="choice5" /></label><br>
+  <button type="submit">Submit</button>
+</form>
 
-    <!-- ✅ เพิ่ม id ให้ฟอร์ม -->
-    <form id="quizForm" class="question">
-      <label>1. คุณจะทำอย่างไรหากอยู่ในสถานการณ์นี้ ?</label><br>
-      <input type="radio" name="choice1" value="ก"> ก. พูดแทรกทันทีด้วยน้ำเสียงไม่พอใจ <br>
-      <input type="radio" name="choice1" value="ข"> ข. ฟังจนเพื่อนพูดจบ มองตา และพยักหน้า แล้วค่อยอธิบายมุมมองคุณเองอย่างสุภาพ <br>
-      <input type="radio" name="choice1" value="ค"> ค. เงียบและไม่พูดอะไรเลย <br>
-      <input type="radio" name="choice1" value="ง"> ง. แสดงสีหน้านิ่งเฉย และหันไปพูดกับเพื่อนที่นั่งอยู่ด้านข้างแทน <br><br>
-
-      <label>2. ต่อไปคุณจะทำอย่างไร…</label><br>
-      <input type="radio" name="choice2" value="ก"> ก. ขอบคุณเพื่อนที่ฟังมุมมองของเรา <br>
-      <input type="radio" name="choice2" value="ข"> ข. บอกเพื่อนว่าคุณโกรธอยู่ และไม่อยากคุยแล้ว <br>
-      <input type="radio" name="choice2" value="ค"> ค. เดินออกจากกลุ่ม <br>
-      <input type="radio" name="choice2" value="ง"> ง. พูดต่อว่าเพื่อนคนนั้น และไม่ยอมรับฟังข้อเสนอแนะที่เพื่อนพูดมา <br><br>
-
-      <label>3. คุณคิดว่าการฟังเพื่อนพูดจนจบสำคัญอย่างไร?</label><br>
-      <input type="radio" name="choice3" value="ก"> ก. ทำให้เข้าใจความรู้สึกและแนวคิดในมุมมองของเพื่อนได้ดีขึ้น <br>
-      <input type="radio" name="choice3" value="ข"> ข. ช่วยสร้างความสัมพันธ์ที่แน่นแฟ้นและไว้ใจได้ <br>
-      <input type="radio" name="choice3" value="ค"> ค. ทำให้เพื่อนรู้สึกว่าตนเองมีค่าและได้รับการยอมรับ <br>
-      <input type="radio" name="choice3" value="ง"> ง. ช่วยให้เราสามารถให้คำแนะนำหรือช่วยแก้ปัญหาได้ตรงจุด <br><br>
-
-      <label>4. ถ้าเพื่อนในกลุ่มไม่ยอมฟังคุณเลย คุณจะทำอย่างไร?</label><br>
-      <input type="radio" name="choice4" value="ก"> ก. พยายามอธิบายใหม่อย่างสุภาพ <br>
-      <input type="radio" name="choice4" value="ข"> ข. เงียบและไม่พูดอะไร <br>
-      <input type="radio" name="choice4" value="ค"> ค. เดินออกจากกลุ่ม <br>
-      <input type="radio" name="choice4" value="ง"> ง. คิดว่าคำตอบของคุณถูกต้องที่สุด <br><br>
-
-      <label>5. คุณคิดว่าทักษะการสื่อสารช่วยพัฒนาความสัมพันธ์ระหว่างเพื่อนเป็นอย่างไร?</label><br>
-      <input type="radio" name="choice5" value="ก"> ก. ทำให้เข้าใจความคิดและความรู้สึกของเพื่อนมากขึ้น <br>
-      <input type="radio" name="choice5" value="ข"> ข. ช่วยลดความเข้าใจผิดและความขัดแย้ง <br>
-      <input type="radio" name="choice5" value="ค"> ค. ทำให้เพื่อนรู้สึกเชื่อใจและอยากคุยด้วย <br>
-      <input type="radio" name="choice5" value="ง"> ง. ส่งเสริมความร่วมมือและทำกิจกรรมร่วมกันได้ดีขึ้น <br><br>
-
-      <input type="submit" value="ส่งคำตอบ">
-    </form>
-
-    <div id="result">
-      <h2>ผลลัพธ์ของคุณ</h2>
-      <p id="feedback"></p>
-      <img id="feedbackImg" src="" alt="ผลลัพธ์">
-    </div>
-  </div>
+<div id="result" style="display:none;">
+  <p id="feedback"></p>
+  <img id="feedbackImg" src="" alt="Feedback Image" width="100">
+</div>
 
 <script>
 const scriptURL = "https://script.google.com/macros/s/AKfycby0zKc2pskWdxvzo8PzTsCrKiQk-SRAinR36Bd3LUMBFMRK3ZQsAxGlNLeWasED78Fm/exec";
 
-document.getElementById("quizForm").addEventListener("submit", function(e) {
+document.getElementById("quizForm").addEventListener("submit", function(e){
   e.preventDefault();
 
-  // ✅ ดึงค่าจาก form
   const formData = new FormData(this);
   const choices = Object.fromEntries(formData.entries());
 
-  // ✅ กำหนด feedback และรูปภาพ
+  // กำหนด feedback และรูป
   let feedback = "";
   let image = "";
 
   if (choices.choice1 === "ข" && choices.choice2 === "ก") {
-      feedback = "ยอดเยี่ยมมาก! คุณเลือกใช้วิธีสื่อสารเชิงบวกที่ช่วยให้ปัญหาคลี่คลาย 👍";
-      image = "images/success.png";
+    feedback = "ยอดเยี่ยมมาก! 👍";
+    image = "images/success.png";
   } else if (choices.choice1 === "ข" && choices.choice2 !== "ก") {
-      feedback = "ดีมากที่คุณฟังจนจบและคุยด้วยน้ำเสียงสุภาพ 👏 ลองเพิ่มคำขอบคุณเพื่อให้บรรยากาศนุ่มนวลขึ้นอีก!";
-      image = "images/positive.png";
+    feedback = "ดีมาก 👏";
+    image = "images/positive.png";
   } else if (choices.choice1 === "ก" || choices.choice2 === "ง") {
-      feedback = "บางครั้งอารมณ์ทำให้เราอยากตอบโต้ทันที 😠 แต่ถ้าลองฟังให้จบและพูดคุยด้วยเหตุผล ความสัมพันธ์จะดีขึ้นมาก";
-      image = "images/calm.png";
+    feedback = "ลองฟังให้จบ 😠";
+    image = "images/calm.png";
   } else if (choices.choice2 === "ค" || choices.choice4 === "เดินออกจากกลุ่ม") {
-      feedback = "การเดินออกจากปัญหาอาจทำให้สถานการณ์ไม่คลี่คลาย 🚶 ลองหันหน้าคุยด้วยใจเย็นจะดีกว่า";
-      image = "images/warning.png"; 
+    feedback = "เดินออกไม่ช่วย 🚶";
+    image = "images/warning.png";
   } else {
-      feedback = "โปรดเลือกคำตอบให้ครบก่อนส่งครับ 🙏";
-      image = "images/alert.png";
+    feedback = "กรุณาเลือกคำตอบครบ 🙏";
+    image = "images/alert.png";
   }
 
-  // ✅ แสดงผลลัพธ์บนหน้า
+  // แสดงผล
   document.getElementById("feedback").textContent = feedback;
   document.getElementById("feedbackImg").src = image;
   document.getElementById("result").style.display = "block";
 
-  // ✅ เตรียมข้อมูล JSON สำหรับส่งไป GAS
-  const dataToSend = {
-    choice1: choices.choice1 || "",
-    choice2: choices.choice2 || "",
-    choice3: choices.choice3 || "",
-    choice4: choices.choice4 || "",
-    choice5: choices.choice5 || "",
-    feedback: feedback
-  };
+  // เพิ่ม feedback เข้า formData
+  formData.append("feedback", feedback);
 
-  console.log("Data to send:", dataToSend);
-
-  // ✅ ส่งข้อมูลไป Google Sheets ผ่าน GAS
-  fetch(scriptURL, { 
-    method: "POST", 
-    body: JSON.stringify(dataToSend), 
-    headers: { 'Content-Type': 'application/json' } 
+  // ส่ง form-encoded → ไม่โดน CORS
+  fetch(scriptURL, {
+    method: "POST",
+    body: new URLSearchParams(formData) // ✅ แปลงเป็น form-encoded
   })
   .then(res => res.json())
   .then(res => {
     console.log("Success:", res);
-    alert("ส่งข้อมูลสำเร็จ ขอบคุณที่ร่วมทำแบบฝึกหัด!");
+    alert("ส่งข้อมูลสำเร็จ!");
   })
   .catch(err => {
     console.error("Error:", err);
-    alert("เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง");
+    alert("เกิดข้อผิดพลาด");
   });
+
 });
 </script>
 </body>
