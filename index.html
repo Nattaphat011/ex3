@@ -2,22 +2,107 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>Quiz Form</title>
+<title>แบบฝึกหัดความสัมพันธ์ระหว่างบุคคล</title>
+<style>
+body {
+  font-family: "Tahoma", sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  max-width: 600px;
+  width: 100%;
+  margin: auto;
+  box-sizing: border-box;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+h2 { color: #2c3e50; font-size: 1.5rem; }
+.question { text-align: left; margin-top: 20px; }
+input[type=submit] {
+  background: #3498db;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  max-width: 300px;
+  margin-top: 15px;
+}
+input[type=submit]:hover { background: #2980b9; }
+#result {
+  margin-top: 30px;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  display: none;
+}
+#result img { max-width: 250px; margin-top: 15px; width: 100%; height: auto; }
+</style>
 </head>
 <body>
 
-<form id="quizForm">
-  <label>Choice 1: <input name="choice1" /></label><br>
-  <label>Choice 2: <input name="choice2" /></label><br>
-  <label>Choice 3: <input name="choice3" /></label><br>
-  <label>Choice 4: <input name="choice4" /></label><br>
-  <label>Choice 5: <input name="choice5" /></label><br>
-  <button type="submit">Submit</button>
-</form>
+<div class="card">
+  <h2>สถานการณ์จำลอง</h2>
+  <p>
+    ขณะนี้คุณกำลังทำงานกลุ่มอยู่กับเพื่อนในกลุ่ม แล้วมีเพื่อนในกลุ่มพูดอะไรบางอย่างที่ทำให้คุณรู้สึกไม่เห็นด้วย 
+    คุณจะทำอย่างไรหากเกิดเหตุการณ์นี้?
+  </p>
 
-<div id="result" style="display:none;">
-  <p id="feedback"></p>
-  <img id="feedbackImg" src="" alt="Feedback Image" width="100">
+  <img src="https://v4i.rweb-images.com/www.thescreenology.com/images/editor/%e0%b9%80%e0%b9%80%e0%b8%81%e0%b9%89%e0%b9%84%e0%b8%821.png" 
+       alt="การทำงานกลุ่ม">
+
+  <form id="quizForm" class="question">
+    <label>1. คุณจะทำอย่างไร?</label><br>
+    <input type="radio" name="choice1" value="ก"> ก. พูดแทรกทันทีด้วยน้ำเสียงไม่พอใจ <br>
+    <input type="radio" name="choice1" value="ข"> ข. ฟังจนเพื่อนพูดจบ แล้วค่อยอธิบายมุมมองคุณเองอย่างสุภาพ <br>
+    <input type="radio" name="choice1" value="ค"> ค. เงียบและไม่พูดอะไรเลย <br>
+    <input type="radio" name="choice1" value="ง"> ง. แสดงสีหน้านิ่งเฉย และหันไปพูดกับเพื่อนที่นั่งอยู่ด้านข้างแทน <br><br>
+
+    <label>2. ต่อไปคุณจะทำอย่างไร?</label><br>
+    <input type="radio" name="choice2" value="ก"> ก. ขอบคุณเพื่อนที่ฟังมุมมองของเรา <br>
+    <input type="radio" name="choice2" value="ข"> ข. บอกเพื่อนว่าคุณโกรธอยู่ และไม่อยากคุยแล้ว <br>
+    <input type="radio" name="choice2" value="ค"> ค. เดินออกจากกลุ่ม <br>
+    <input type="radio" name="choice2" value="ง"> ง. พูดต่อว่าเพื่อนคนนั้น และไม่ยอมรับฟังข้อเสนอแนะที่เพื่อนพูดมา <br><br>
+
+    <label>3. คุณคิดว่าการฟังเพื่อนพูดจนจบสำคัญอย่างไร?</label><br>
+    <input type="radio" name="choice3" value="ก"> ก. ทำให้เข้าใจความรู้สึกและแนวคิดของเพื่อนดีขึ้น <br>
+    <input type="radio" name="choice3" value="ข"> ข. ช่วยสร้างความสัมพันธ์ที่แน่นแฟ้นและไว้ใจได้ <br>
+    <input type="radio" name="choice3" value="ค"> ค. ทำให้เพื่อนรู้สึกว่าตนเองมีค่าและได้รับการยอมรับ <br>
+    <input type="radio" name="choice3" value="ง"> ง. ช่วยให้เราสามารถให้คำแนะนำหรือช่วยแก้ปัญหาได้ตรงจุด <br><br>
+
+    <label>4. ถ้าเพื่อนไม่ยอมฟังคุณเลย คุณจะทำอย่างไร?</label><br>
+    <input type="radio" name="choice4" value="ก"> ก. พยายามอธิบายใหม่อย่างสุภาพ <br>
+    <input type="radio" name="choice4" value="ข"> ข. เงียบและไม่พูดอะไร <br>
+    <input type="radio" name="choice4" value="ค"> ค. เดินออกจากกลุ่ม <br>
+    <input type="radio" name="choice4" value="ง"> ง. คิดว่าคำตอบของคุณถูกต้องที่สุด <br><br>
+
+    <label>5. คุณคิดว่าทักษะการสื่อสารช่วยพัฒนาความสัมพันธ์ระหว่างเพื่อนเป็นอย่างไร?</label><br>
+    <input type="radio" name="choice5" value="ก"> ก. ทำให้เข้าใจความคิดและความรู้สึกของเพื่อนมากขึ้น <br>
+    <input type="radio" name="choice5" value="ข"> ข. ช่วยลดความเข้าใจผิดและความขัดแย้ง <br>
+    <input type="radio" name="choice5" value="ค"> ค. ทำให้เพื่อนรู้สึกเชื่อใจและอยากคุยด้วย <br>
+    <input type="radio" name="choice5" value="ง"> ง. ส่งเสริมความร่วมมือและทำกิจกรรมร่วมกันได้ดีขึ้น <br><br>
+
+    <input type="submit" value="ส่งคำตอบ">
+  </form>
+
+  <div id="result">
+    <h2>ผลลัพธ์ของคุณ</h2>
+    <p id="feedback"></p>
+    <img id="feedbackImg" src="" alt="ผลลัพธ์">
+  </div>
 </div>
 
 <script>
@@ -61,7 +146,7 @@ document.getElementById("quizForm").addEventListener("submit", function(e){
   // ส่ง form-encoded → ไม่โดน CORS
   fetch(scriptURL, {
     method: "POST",
-    body: new URLSearchParams(formData) // ✅ แปลงเป็น form-encoded
+    body: new URLSearchParams(formData)
   })
   .then(res => res.json())
   .then(res => {
