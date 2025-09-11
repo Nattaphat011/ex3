@@ -27,6 +27,7 @@ img {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
+  margin: 15px 0;
 }
 h2 { color: #2c3e50; font-size: 1.5rem; }
 .question { text-align: left; margin-top: 20px; }
@@ -52,6 +53,17 @@ input[type=submit]:hover { background: #2980b9; }
   display: none;
 }
 #result img { max-width: 250px; margin-top: 15px; width: 100%; height: auto; }
+
+@media (max-width: 600px) {
+  body { padding: 10px; }
+  .card { padding: 15px; }
+  h2 { font-size: 1.2rem; }
+  input[type=submit] { font-size: 14px; padding: 10px 20px; }
+}
+
+label { font-weight: bold; margin-top: 10px; display: block; }
+
+input[type="radio"] { margin: 8px 10px 8px 0; }
 </style>
 </head>
 <body>
@@ -59,7 +71,7 @@ input[type=submit]:hover { background: #2980b9; }
 <div class="card">
   <h2>สถานการณ์จำลอง</h2>
 
-  <img src="images/หัวข้อ 3.png" alt="">
+  <img src="images/หัวข้อ3.png" alt="การทำงานกลุ่ม">
 
   <p>
     ขณะนี้คุณกำลังทำงานกลุ่มอยู่กับเพื่อนในกลุ่ม แล้วมีเพื่อนในกลุ่มพูดอะไรบางอย่างที่ทำให้คุณรู้สึกไม่เห็นด้วย 
