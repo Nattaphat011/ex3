@@ -1,188 +1,143 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<title>แบบฝึกหัดความสัมพันธ์ระหว่างบุคคล</title>
-<!-- เปลี่ยนไอคอนเว็บไซต์ -->
-<link rel="icon" href="https://img.icons8.com/fluency/48/000000/conference-call.png"/>
-<style>
-body {
-  font-family: "Tahoma", sans-serif;
-  background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
-  text-align: center;
-  margin: 0;
-  padding: 20px;
-}
-.card {
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  max-width: 600px;
-  width: 100%;
-  margin: auto;
-  box-sizing: border-box;
-}
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin: 15px 0;
-}
-h2 { color: #2c3e50; font-size: 1.5rem; }
-.question { text-align: left; margin-top: 20px; }
-input[type=submit] {
-  background: #3498db;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  width: 100%;
-  max-width: 300px;
-  margin-top: 15px;
-}
-input[type=submit]:hover { background: #2980b9; }
-#result {
-  margin-top: 30px;
-  padding: 20px;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  display: none;
-}
-#result img { max-width: 250px; margin-top: 15px; width: 100%; height: auto; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- เปลี่ยนไอคอนเว็บไซต์ -->
+  <link rel="icon" href="https://img.icons8.com/fluency/48/000000/goal.png"/>
+  <title>Life Goal Setting — การตั้งเป้าหมายชีวิต</title>
+    <style>
+    /* ฟอนต์ดูหรู (Google Fonts) */
+    @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;500;700&display=swap');
 
-@media (max-width: 600px) {
-  body { padding: 10px; }
-  .card { padding: 15px; }
-  h2 { font-size: 1.2rem; }
-  input[type=submit] { font-size: 14px; padding: 10px 20px; }
-}
+    body {
+      font-family: "Kanit", sans-serif;
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      color: #2c3e50;
+      margin: 0;
+      padding: 30px;
+    }
 
-label { font-weight: bold; margin-top: 10px; display: block; }
+    h1, h2 {
+      text-align: center;
+      color: #2c3e50;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
 
-input[type="radio"] { margin: 8px 10px 8px 0; }
-</style>
+    h1 {
+      font-size: 2.2em;
+      color: #ff6b6b;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      font-size: 1.5em;
+      color: #34495e;
+    }
+
+    h4, p {
+      text-align: center;
+      max-width: 800px;
+      margin: 10px auto;
+      line-height: 1.6;
+    }
+
+    /* กล่องฟอร์มแบบ Glassmorphism */
+    form {
+      max-width: 700px;
+      margin: 30px auto;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      padding: 25px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: none;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.9);
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
+      font-size: 1em;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #ff6b6b, #fcb69f);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1.1em;
+      font-weight: 600;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease-in-out;
+      display: block;
+      width: 100%;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #ff4757, #f78ca0);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    /* เอฟเฟกต์ input focus */
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255,107,107,0.4);
+    }
+  </style>
 </head>
 <body>
+  <img src="images/หัวข้อ5.png" alt="การตั้งเป้าหมายชีวิต" style="display: block; margin: 0 auto; max-width: 200px; height: auto;">
+  <h1>Life Goal Setting</h1>
+  <h2>การตั้งเป้าหมายชีวิต</h2>
+  <h4>คือ ฉันอยากให้คุณตั้งเป้าหมายในอนาคตของคุณว่า ปัจจุบันคุณจะทำอย่างไร เพื่อให้เป็นการส่งเสริมคุณให้เป็นคนที่ดีขึ้นในอนาคต</h4>
+  <br>
+  <p>✨ ตั้งเป้าหมายใหญ่ภายใน 1 ปี → แบ่งเป็นเป้าหมายเล็ก → ติดตามผลทุกเดือน ✨</p>
+  <p>ตัวอย่าง: เป้าหมายใหญ่ = เรียนภาษาอังกฤษให้ได้ 500 คำ → เป้าหมายเล็ก = เรียน 50 คำต่อเดือน</p>
+  <p>ใช้ฟอร์มนี้บันทึกเป้าหมายและติดตามผลทุกเดือน</p>
 
-<div class="card">
-  <img src="images/หัวข้อ3.png" alt="การทำงานกลุ่ม">
+  <form action="https://script.google.com/macros/s/AKfycbzlOdTZJu1Wx71SOTghny2AsSStVBF5TuOFfEngXXDC162tf9T30s0UDTOD-l2Wgpc/exec" method="POST" target="_blank">
+    <h2>1. เป้าหมายใหญ่ของคุณ</h2>
+    <label>เป้าหมายหลักของฉันภายใน 1 ปีคือ:</label>
+    <input type="text" name="goal_main" required placeholder="เช่น อยากเรียนภาษาอังกฤษให้ได้ 500 คำ">
 
- <h2>สถานการณ์จำลอง</h2>
-  <p>
-    ขณะนี้คุณกำลังทำงานกลุ่มอยู่กับเพื่อนในกลุ่ม แล้วมีเพื่อนในกลุ่มพูดอะไรบางอย่างที่ทำให้คุณรู้สึกไม่เห็นด้วย 
-    คุณจะทำอย่างไรหากเกิดเหตุการณ์นี้?
-  </p>
+    <h2>2. เป้าหมายย่อยรายเดือน</h2>
+    <label>เดือนนี้ฉันจะทำอะไรให้สำเร็จ:</label>
+    <input type="text" name="goal_monthly" required placeholder="เช่น เรียนภาษาอังกฤษ 50 คำ">
 
-  <img src="https://v4i.rweb-images.com/www.thescreenology.com/images/editor/%e0%b9%80%e0%b9%80%e0%b8%81%e0%b9%89%e0%b9%84%e0%b8%821.png" 
-       alt="การทำงานกลุ่ม">
+    <h2>3. ติดตามผลรายเดือน</h2>
+    <label>เดือนนี้สำเร็จหรือไม่:</label>
+    <select name="success" required>
+      <option value="ใช่">✅ ใช่</option>
+      <option value="ไม่ใช่">❌ ไม่ใช่</option>
+    </select>
 
-  <form id="quizForm" class="question">
-    <label>1. คุณจะทำอย่างไร?</label><br>
-    <input type="radio" name="choice1" value="ก"> ก. พูดแทรกทันทีด้วยน้ำเสียงไม่พอใจ <br>
-    <input type="radio" name="choice1" value="ข"> ข. ฟังจนเพื่อนพูดจบ แล้วค่อยอธิบายมุมมองคุณเองอย่างสุภาพ <br>
-    <input type="radio" name="choice1" value="ค"> ค. เงียบและไม่พูดอะไรเลย <br>
-    <input type="radio" name="choice1" value="ง"> ง. แสดงสีหน้านิ่งเฉย และหันไปพูดกับเพื่อนที่นั่งอยู่ด้านข้างแทน <br><br>
+    <label>คะแนนความก้าวหน้า (0–100%):</label>
+    <input type="number" name="progress_score" min="0" max="100" required>
 
-    <label>2. ต่อไปคุณจะทำอย่างไร?</label><br>
-    <input type="radio" name="choice2" value="ก"> ก. ขอบคุณเพื่อนที่ฟังมุมมองของเรา <br>
-    <input type="radio" name="choice2" value="ข"> ข. บอกเพื่อนว่าคุณโกรธอยู่ และไม่อยากคุยแล้ว <br>
-    <input type="radio" name="choice2" value="ค"> ค. เดินออกจากกลุ่ม <br>
-    <input type="radio" name="choice2" value="ง"> ง. พูดต่อว่าเพื่อนคนนั้น และไม่ยอมรับฟังข้อเสนอแนะที่เพื่อนพูดมา <br><br>
+    <label>ถ้าไม่สำเร็จ ฉันจะปรับแผนโดย:</label>
+    <textarea name="adjust_plan" rows="3" placeholder="เช่น จะลดเป้าหมายเหลือ 30 คำ"></textarea>
 
-    <label>3. คุณคิดว่าการฟังเพื่อนพูดจนจบสำคัญอย่างไร?</label><br>
-    <input type="radio" name="choice3" value="ก"> ก. ทำให้เข้าใจความรู้สึกและแนวคิดของเพื่อนดีขึ้น <br>
-    <input type="radio" name="choice3" value="ข"> ข. ช่วยสร้างความสัมพันธ์ที่แน่นแฟ้นและไว้ใจได้ <br>
-    <input type="radio" name="choice3" value="ค"> ค. ทำให้เพื่อนรู้สึกว่าตนเองมีค่าและได้รับการยอมรับ <br>
-    <input type="radio" name="choice3" value="ง"> ง. ช่วยให้เราสามารถให้คำแนะนำหรือช่วยแก้ปัญหาได้ตรงจุด <br><br>
-
-    <label>4. ถ้าเพื่อนไม่ยอมฟังคุณเลย คุณจะทำอย่างไร?</label><br>
-    <input type="radio" name="choice4" value="ก"> ก. พยายามอธิบายใหม่อย่างสุภาพ <br>
-    <input type="radio" name="choice4" value="ข"> ข. เงียบและไม่พูดอะไร <br>
-    <input type="radio" name="choice4" value="ค"> ค. เดินออกจากกลุ่ม <br>
-    <input type="radio" name="choice4" value="ง"> ง. คิดว่าคำตอบของคุณถูกต้องที่สุด <br><br>
-
-    <label>5. คุณคิดว่าทักษะการสื่อสารช่วยพัฒนาความสัมพันธ์ระหว่างเพื่อนเป็นอย่างไร?</label><br>
-    <input type="radio" name="choice5" value="ก"> ก. ทำให้เข้าใจความคิดและความรู้สึกของเพื่อนมากขึ้น <br>
-    <input type="radio" name="choice5" value="ข"> ข. ช่วยลดความเข้าใจผิดและความขัดแย้ง <br>
-    <input type="radio" name="choice5" value="ค"> ค. ทำให้เพื่อนรู้สึกเชื่อใจและอยากคุยด้วย <br>
-    <input type="radio" name="choice5" value="ง"> ง. ส่งเสริมความร่วมมือและทำกิจกรรมร่วมกันได้ดีขึ้น <br><br>
-
-    <input type="submit" value="ส่งคำตอบ">
+    <button type="submit">บันทึกเป้าหมาย</button>
   </form>
-
-  <div id="result">
-    <h2>ผลลัพธ์ของคุณ</h2>
-    <p id="feedback"></p>
-    <img id="feedbackImg" src="" alt="ผลลัพธ์">
-  </div>
-</div>
-
-<script>
-const scriptURL = "https://script.google.com/macros/s/AKfycby0zKc2pskWdxvzo8PzTsCrKiQk-SRAinR36Bd3LUMBFMRK3ZQsAxGlNLeWasED78Fm/exec";
-
-document.getElementById("quizForm").addEventListener("submit", function(e){
-  e.preventDefault();
-
-  const formData = new FormData(this);
-  const choices = Object.fromEntries(formData.entries());
-
-  // กำหนด feedback และรูป
-  let feedback = "";
-  let image = "";
-
-  if (choices.choice1 === "ข" && choices.choice2 === "ก") {
-    feedback = "ยอดเยี่ยมมาก! 👍 คุณฟังจนจบและขอบคุณเพื่อน ทำให้สถานการณ์คลี่คลายได้";
-    image = "images/success.png";
-  } 
-  else if (choices.choice1 === "ข" && choices.choice2 !== "ก") {
-    feedback = "คุณทำได้ดีมาก 👏 คุณฟังจนจบและพูดอย่างสุภาพ คุณลองเพิ่มคำขอบคุณ เพื่อบรรยากาศที่ดียิ่งขึ้นดูสิ";
-    image = "images/positive.png";
-  } 
-  else if (choices.choice1 === "ก" || choices.choice2 === "ง") {
-    feedback = "บางครั้งอารมณ์ทำให้เราอยากโต้ตอบ 😠 ลองฟังให้จบและพูดคุยด้วยเหตุผล ความสัมพันธ์จะดีขึ้น";
-    image = "images/calm.png";
-  } 
-  else if (choices.choice2 === "ค" || choices.choice4 === "ค") {
-    feedback = "การที่คุณเดินหนีปัญหามันจะยิ่งทำให้สถานการณ์แย่ขึ้น คุณลองหันหน้าคุยกันด้วยความเข้าใจดูสิ";
-    image = "images/warning.png";
-  } 
-  else if (!choices.choice1 || !choices.choice2 || !choices.choice3 || !choices.choice4 || !choices.choice5) {
-    feedback = "กรุณาเลือกคำตอบครบทุกข้อ 🙏";
-    image = "images/alert.png";
-  } 
-  else {
-    feedback = "คำตอบของคุณถูกบันทึกเรียบร้อย ✅";
-    image = "images/neutral.png";
-  }
-
-  // แสดงผล
-  document.getElementById("feedback").textContent = feedback;
-  document.getElementById("feedbackImg").src = image;
-  document.getElementById("result").style.display = "block";
-
-  // เพิ่ม feedback เข้า formData
-  formData.append("feedback", feedback);
-
-  // ส่ง form-encoded → ไม่โดน CORS
-  fetch(scriptURL, {
-    method: "POST",
-    body: new URLSearchParams(formData)
-  })
-  .then(res => res.json())
-  .then(res => {
-    console.log("Success:", res);
-    alert("ส่งข้อมูลสำเร็จ!");
-  })
-  .catch(err => {
-    console.error("Error:", err);
-    alert("เกิดข้อผิดพลาด");
-  });
-
-});
-</script>
 </body>
 </html>
