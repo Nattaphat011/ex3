@@ -93,6 +93,7 @@ img {
   height: auto;
   border-radius: 12px;
   margin: 15px 0;
+  justify-content: center;
 }
 
 #result img { max-width: 250px; margin-top: 15px; width: 100%; height: auto; }
@@ -199,7 +200,7 @@ em {
 <div class="particle" style="width:12px; height:12px; left:40%; top:10%; animation-delay:1.5s;"></div>
 <div class="particle" style="width:18px; height:18px; left:25%; top:50%; animation-delay:4s;"></div>
 
-
+<div class="card">
   <img src="images/หัวข้อ3.png" 
      alt="รูปภาพ" 
      class="goal-img"
@@ -210,10 +211,10 @@ em {
      <div id="imgModal" class="img-modal">
   <span class="img-close">&times;</span>
   <img class="img-modal-content" id="imgModalContent">
-  <div id="imgCaption"></div>
-</div>
+  <div id="imgCaption">
 
-<div class="card">
+
+
 
  <h2>สถานการณ์จำลอง</h2>
   <p>
@@ -263,6 +264,8 @@ em {
     <p id="feedback"></p>
     <img id="feedbackImg" src="" alt="ผลลัพธ์">
   </div>
+  </div>
+</div>
 </div>
 
 <script>
