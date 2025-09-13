@@ -8,6 +8,13 @@
 <style>
 /* ===== Global Fonts ===== */
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;500;700&display=swap');
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
 body {
   font-family: "Kanit", sans-serif;
   margin: 0;
@@ -21,7 +28,20 @@ body {
   animation: gradientMove 15s ease infinite;
   overflow-x: hidden;
 }
+.intro, .scenario, .quiz, .result {
+  background: rgba(255,255,255,0.25);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
 
+.scenario-img {
+  display: block;
+  margin: 15px auto;
+  border-radius: 12px;
+  max-width: 100%;
+}
 /* ===== Background Animation ===== */
 @keyframes gradientMove {
   0% { background-position: 0% 50%; }
@@ -36,6 +56,7 @@ h2 {
   margin-bottom: 15px;
   text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
+
 em {
   display: block;
   text-align: center;
@@ -43,7 +64,16 @@ em {
   font-size: 0.9em;
   color: #555;
 }
-.question { text-align: left; margin-top: 20px; }
+
+.question {
+  margin-bottom: 20px;
+}
+
+.question label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
 
 /* ===== Form & Button ===== */
 input[type=submit] {
@@ -162,7 +192,7 @@ img.goal-img {
 <div class="particle" style="width:12px; height:12px; left:40%; top:10%; animation-delay:1.5s;"></div>
 <div class="particle" style="width:18px; height:18px; left:25%; top:50%; animation-delay:4s;"></div>
 
-
+<div class="container">
   <img src="images/หัวข้อ3.png" 
      alt="รูปภาพ" 
      class="goal-img"
@@ -186,45 +216,103 @@ img.goal-img {
   <img src="https://v4i.rweb-images.com/www.thescreenology.com/images/editor/%e0%b9%80%e0%b9%80%e0%b8%81%e0%b9%89%e0%b9%84%e0%b8%821.png" 
        alt="การทำงานกลุ่ม">
 
-  <form id="quizForm" class="question">
-    <label>1. คุณจะทำอย่างไร?</label><br>
-    <input type="radio" name="choice1" value="ก"> ก. พูดแทรกทันทีด้วยน้ำเสียงไม่พอใจ <br>
-    <input type="radio" name="choice1" value="ข"> ข. ฟังจนเพื่อนพูดจบ แล้วค่อยอธิบายมุมมองคุณเองอย่างสุภาพ <br>
-    <input type="radio" name="choice1" value="ค"> ค. เงียบและไม่พูดอะไรเลย <br>
-    <input type="radio" name="choice1" value="ง"> ง. แสดงสีหน้านิ่งเฉย และหันไปพูดกับเพื่อนที่นั่งอยู่ด้านข้างแทน <br><br>
+   <form id="quizForm" class="quiz">
+    <div class="question">
+      <label>1. คุณจะทำอย่างไร?</label>
+      <div>
+        <input type="radio" name="choice1" value="ก"> ก. พูดแทรกทันทีด้วยน้ำเสียงไม่พอใจ
+      </div>
+      <div>
+        <input type="radio" name="choice1" value="ข"> ข. ฟังจนเพื่อนพูดจบ แล้วค่อยอธิบายมุมมองคุณเองอย่างสุภาพ
+      </div>
+      <div>
+        <input type="radio" name="choice1" value="ค"> ค. เงียบและไม่พูดอะไรเลย
+      </div>
+      <div>
+        <input type="radio" name="choice1" value="ง"> ง. แสดงสีหน้านิ่งเฉย และหันไปพูดกับเพื่อนที่นั่งอยู่ด้านข้างแทน
+      </div>
+    </div>
 
-    <label>2. ต่อไปคุณจะทำอย่างไร?</label><br>
-    <input type="radio" name="choice2" value="ก"> ก. ขอบคุณเพื่อนที่ฟังมุมมองของเรา <br>
-    <input type="radio" name="choice2" value="ข"> ข. บอกเพื่อนว่าคุณโกรธอยู่ และไม่อยากคุยแล้ว <br>
-    <input type="radio" name="choice2" value="ค"> ค. เดินออกจากกลุ่ม <br>
-    <input type="radio" name="choice2" value="ง"> ง. พูดต่อว่าเพื่อนคนนั้น และไม่ยอมรับฟังข้อเสนอแนะที่เพื่อนพูดมา <br><br>
+    <form id="quizForm" class="quiz">
+    <div class="question">
+      <label>2. ต่อไปคุณจะทำอย่างไร?</label>
+    <div>
+      <input type="radio" name="choice2" value="ก"> ก. ขอบคุณเพื่อนที่ฟังมุมมองของเรา 
+    </div>
+    <div>
+      <input type="radio" name="choice2" value="ข"> ข. บอกเพื่อนว่าคุณโกรธอยู่ และไม่อยากคุยแล้ว 
+    </div>
+    <div>
+      <input type="radio" name="choice2" value="ค"> ค. เดินออกจากกลุ่ม 
+    </div>
+    <div>
+      <input type="radio" name="choice2" value="ง"> ง. พูดต่อว่าเพื่อนคนนั้น และไม่ยอมรับฟังข้อเสนอแนะที่เพื่อนพูดมา 
+    </div>
 
-    <label>3. คุณคิดว่าการฟังเพื่อนพูดจนจบสำคัญอย่างไร?</label><br>
-    <input type="radio" name="choice3" value="ก"> ก. ทำให้เข้าใจความรู้สึกและแนวคิดของเพื่อนดีขึ้น <br>
-    <input type="radio" name="choice3" value="ข"> ข. ช่วยสร้างความสัมพันธ์ที่แน่นแฟ้นและไว้ใจได้ <br>
-    <input type="radio" name="choice3" value="ค"> ค. ทำให้เพื่อนรู้สึกว่าตนเองมีค่าและได้รับการยอมรับ <br>
-    <input type="radio" name="choice3" value="ง"> ง. ช่วยให้เราสามารถให้คำแนะนำหรือช่วยแก้ปัญหาได้ตรงจุด <br><br>
+    <form id="quizForm" class="quiz">
+    <div class="question">
+    <div>
+      <label>3. คุณคิดว่าการฟังเพื่อนพูดจนจบสำคัญอย่างไร?</label><br>
+    </div>
+    <div>
+      <input type="radio" name="choice3" value="ก"> ก. ทำให้เข้าใจความรู้สึกและแนวคิดของเพื่อนดีขึ้น <br>
+    </div>
+    <div>
+      <input type="radio" name="choice3" value="ข"> ข. ช่วยสร้างความสัมพันธ์ที่แน่นแฟ้นและไว้ใจได้ <br>
+    </div>
+    <div>
+      <input type="radio" name="choice3" value="ค"> ค. ทำให้เพื่อนรู้สึกว่าตนเองมีค่าและได้รับการยอมรับ <br>
+    </div>
+    <div>
+      <input type="radio" name="choice3" value="ง"> ง. ช่วยให้เราสามารถให้คำแนะนำหรือช่วยแก้ปัญหาได้ตรงจุด <br><br>
+    </div>
 
-    <label>4. ถ้าเพื่อนไม่ยอมฟังคุณเลย คุณจะทำอย่างไร?</label><br>
-    <input type="radio" name="choice4" value="ก"> ก. พยายามอธิบายใหม่อย่างสุภาพ <br>
-    <input type="radio" name="choice4" value="ข"> ข. เงียบและไม่พูดอะไร <br>
-    <input type="radio" name="choice4" value="ค"> ค. เดินออกจากกลุ่ม <br>
-    <input type="radio" name="choice4" value="ง"> ง. คิดว่าคำตอบของคุณถูกต้องที่สุด <br><br>
+    <form id="quizForm" class="quiz">
+    <div class="question">
+    <div>   
+      <label>4. ถ้าเพื่อนไม่ยอมฟังคุณเลย คุณจะทำอย่างไร?</label>
+    </div>
+    <div>
+      <input type="radio" name="choice4" value="ก"> ก. พยายามอธิบายใหม่อย่างสุภาพ <br>
+    </div>
+    <div>
+      <input type="radio" name="choice4" value="ข"> ข. เงียบและไม่พูดอะไร <br>
+    </div>
+    <div>
+      <input type="radio" name="choice4" value="ค"> ค. เดินออกจากกลุ่ม <br>
+    </div>
+    <div>
+      <input type="radio" name="choice4" value="ง"> ง. คิดว่าคำตอบของคุณถูกต้องที่สุด <br><br>
+    </div>
 
+    <form id="quizForm" class="quiz">
+    <div class="question">
+    <div>
     <label>5. คุณคิดว่าทักษะการสื่อสารช่วยพัฒนาความสัมพันธ์ระหว่างเพื่อนเป็นอย่างไร?</label><br>
-    <input type="radio" name="choice5" value="ก"> ก. ทำให้เข้าใจความคิดและความรู้สึกของเพื่อนมากขึ้น <br>
-    <input type="radio" name="choice5" value="ข"> ข. ช่วยลดความเข้าใจผิดและความขัดแย้ง <br>
-    <input type="radio" name="choice5" value="ค"> ค. ทำให้เพื่อนรู้สึกเชื่อใจและอยากคุยด้วย <br>
-    <input type="radio" name="choice5" value="ง"> ง. ส่งเสริมความร่วมมือและทำกิจกรรมร่วมกันได้ดีขึ้น <br><br>
+    </div>
+    <div>
+      <input type="radio" name="choice5" value="ก"> ก. ทำให้เข้าใจความคิดและความรู้สึกของเพื่อนมากขึ้น <br>
+    </div>
+    <div>
+      <input type="radio" name="choice5" value="ข"> ข. ช่วยลดความเข้าใจผิดและความขัดแย้ง <br>
+    </div>
+    <div>
+      <input type="radio" name="choice5" value="ค"> ค. ทำให้เพื่อนรู้สึกเชื่อใจและอยากคุยด้วย <br>
+    </div>
+    <div>
+      <input type="radio" name="choice5" value="ง"> ง. ส่งเสริมความร่วมมือและทำกิจกรรมร่วมกันได้ดีขึ้น <br><br>
+    </div>
 
     <input type="submit" value="ส่งคำตอบ">
   </form>
 
-  <div id="result">
+  <div id="result" class="result">
     <h2>ผลลัพธ์ของคุณ</h2>
     <p id="feedback"></p>
     <img id="feedbackImg" src="" alt="ผลลัพธ์">
   </div>
+  
+</div>
 
 
 <script>
