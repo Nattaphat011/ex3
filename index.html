@@ -119,27 +119,32 @@ img {
   border-radius: 12px;
   margin: 15px 0;
 }
-img.goal-img {
+   img.goal-img {
   display: block;
   margin: 0 auto 20px;
-  width: 100%;
-  max-width: 250px;
+  width: 100%;          /* ให้กินความกว้างเต็ม container */
+  max-width: 350px;     /* แต่ไม่เกิน 500px บนจอใหญ่ */
+  height: auto;         /* คงอัตราส่วน */
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   object-fit: cover;
-  cursor: zoom-in;
+  cursor: zoom-in; /* เปลี่ยนเคอร์เซอร์เป็นสัญลักษณ์ขยาย */
 }
 
-/* ===== Modal Image ===== */
+/* สไตล์สำหรับ modal รูปภาพ */
 .img-modal {
-  display: none;
+  display: none; /* ซ่อน modal เริ่มต้น */
   position: fixed;
   z-index: 1000;
   padding-top: 60px;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
   background: rgba(0,0,0,0.85);
 }
+
 .img-modal-content {
   margin: auto;
   display: block;
@@ -148,16 +153,19 @@ img.goal-img {
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(255,255,255,0.3);
 }
+
 .img-close {
   position: absolute;
-  top: 20px; right: 30px;
+  top: 20px;
+  right: 30px;
   color: #fff;
   font-size: 40px;
   font-weight: bold;
   cursor: pointer;
 }
-.img-close:hover { color: #ff6b6b; }
-
+.img-close:hover {
+  color: #ff6b6b;
+}
 /* ===== Floating Particles ===== */
 .particle {
   position: absolute;
