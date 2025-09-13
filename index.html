@@ -30,22 +30,7 @@
 }
 
 /* card แบบ glassmorphism */
-.card {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-  max-width: 650px;
-  width: 100%;
-  margin: auto;
-  box-sizing: border-box;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  position: relative;
-  z-index: 1;
-  animation: fadeIn 1.2s ease;
-}
+
 
 @keyframes fadeIn {
   from {opacity: 0; transform: translateY(30px);}
@@ -89,11 +74,10 @@ input[type=submit]:hover {
 }
 
 img {
-  max-width: 60%;
+  max-width: 100%;
   height: auto;
   border-radius: 12px;
   margin: 15px 0;
-  justify-content: center;
 }
 
 #result img { max-width: 250px; margin-top: 15px; width: 100%; height: auto; }
@@ -200,7 +184,7 @@ em {
 <div class="particle" style="width:12px; height:12px; left:40%; top:10%; animation-delay:1.5s;"></div>
 <div class="particle" style="width:18px; height:18px; left:25%; top:50%; animation-delay:4s;"></div>
 
-<div class="card">
+
   <img src="images/หัวข้อ3.png" 
      alt="รูปภาพ" 
      class="goal-img"
@@ -263,7 +247,7 @@ em {
     <p id="feedback"></p>
     <img id="feedbackImg" src="" alt="ผลลัพธ์">
   </div>
-</div>
+
 
 <script>
 const scriptURL = "https://script.google.com/macros/s/AKfycby0zKc2pskWdxvzo8PzTsCrKiQk-SRAinR36Bd3LUMBFMRK3ZQsAxGlNLeWasED78Fm/exec";
