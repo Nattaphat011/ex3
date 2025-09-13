@@ -6,74 +6,149 @@
 <!-- เปลี่ยนไอคอนเว็บไซต์ -->
 <link rel="icon" href="https://img.icons8.com/fluency/48/000000/conference-call.png"/>
 <style>
-body {
-  font-family: "Tahoma", sans-serif;
-  background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;500;700&display=swap');
+
+  body {
+  font-family: "Kanit", sans-serif;
   margin: 0;
   padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(-45deg, #e3f2fd, #ede7f6, #fce4ec, #fffde7);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  overflow-x: hidden;
 }
+
+/* พื้นหลังไล่สีเคลื่อนไหว */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* card แบบ glassmorphism */
 .card {
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  max-width: 600px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  max-width: 650px;
   width: 100%;
   margin: auto;
   box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 1.2s ease;
 }
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin: 15px 0;
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
 }
-h2 { color: #2c3e50; font-size: 1.5rem; }
+
+h2 { 
+  color: #2c3e50; 
+  font-size: 1.6rem; 
+  margin-bottom: 15px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
 .question { text-align: left; margin-top: 20px; }
 input[type=submit] {
-  background: #3498db;
+  background: linear-gradient(135deg, #42a5f5, #7e57c2);
   color: white;
-  padding: 12px 24px;
+  padding: 14px 28px;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
   font-size: 16px;
   width: 100%;
   max-width: 300px;
   margin-top: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-input[type=submit]:hover { background: #2980b9; }
+input[type=submit]:hover { 
+  transform: translateY(-3px); 
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
 #result {
   margin-top: 30px;
   padding: 20px;
-  background: white;
+  background: rgba(255,255,255,0.25);
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   display: none;
+  backdrop-filter: blur(15px);
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 15px 0;
+}
+
 #result img { max-width: 250px; margin-top: 15px; width: 100%; height: auto; }
+
+/* floating particles */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.6);
+  animation: float 12s infinite ease-in-out;
+}
+@keyframes float {
+  0% { transform: translateY(0) scale(1); opacity: 0.7; }
+  50% { transform: translateY(-60px) scale(1.2); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 0.7; }
+}
 
 @media (max-width: 600px) {
   body { padding: 10px; }
-  .card { padding: 15px; }
-  h2 { font-size: 1.2rem; }
+  .card { padding: 18px; }
+  h2 { font-size: 1.3rem; }
   input[type=submit] { font-size: 14px; padding: 10px 20px; }
 }
-
-label { font-weight: bold; margin-top: 10px; display: block; }
-
-input[type="radio"] { margin: 8px 10px 8px 0; }
 </style>
 </head>
 <body>
+<!-- Floating Glow Particles -->
+<div class="particle" style="width:25px; height:25px; left:10%; top:80%; animation-delay:0s;"></div>
+<div class="particle" style="width:15px; height:15px; left:70%; top:60%; animation-delay:3s;"></div>
+<div class="particle" style="width:20px; height:20px; left:85%; top:20%; animation-delay:6s;"></div>
+<div class="particle" style="width:12px; height:12px; left:40%; top:10%; animation-delay:1.5s;"></div>
+<div class="particle" style="width:18px; height:18px; left:25%; top:50%; animation-delay:4s;"></div>
 
 <div class="card">
-  <img src="images/หัวข้อ3.png" alt="การทำงานกลุ่ม">
+  <img src="images/หัวข้อ2.jpg" 
+     alt="รูปภาพ" 
+     class="goal-img"
+     id="myImage">
+<!-- หมายเหตุสามารถแตะรูปภาพเพื่อขยายภาพได้ -->
+ <em> (สามารถแตะรูปภาพเพื่อขยายภาพได้) </em>
+
+  <!-- ภาพตกแต่งลอย -->
+  <img src="images/1.png"
+       alt="โลโก้วิทยาลัย"
+       class="floating-img">
+
+     <div id="imgModal" class="img-modal">
+  <span class="img-close">&times;</span>
+  <img class="img-modal-content" id="imgModalContent">
+  <div id="imgCaption"></div>
+</div>
+
 
  <h2>สถานการณ์จำลอง</h2>
   <p>
-    ขณะนี้คุณกำลังทำงานกลุ่มอยู่กับเพื่อน แล้วมีเพื่อนในกลุ่มพูดอะไรบางอย่างที่ทำให้คุณรู้สึกไม่เห็นด้วย 
+    ขณะนี้คุณกำลังทำงานกลุ่มอยู่กับเพื่อนในกลุ่ม แล้วมีเพื่อนในกลุ่มพูดอะไรบางอย่างที่ทำให้คุณรู้สึกไม่เห็นด้วย 
     คุณจะทำอย่างไรหากเกิดเหตุการณ์นี้?
   </p>
 
@@ -82,22 +157,22 @@ input[type="radio"] { margin: 8px 10px 8px 0; }
 
   <form id="quizForm" class="question">
     <label>1. คุณจะทำอย่างไร?</label><br>
-    <input type="radio" name="choice1" value="ก"> ก. พูดแทรกทันที ด้วยน้ำเสียงไม่พอใจ <br>
-    <input type="radio" name="choice1" value="ข"> ข. ฟังจนเพื่อนพูดจบ แล้วค่อยอธิบายมุมมองของคุณเองอย่างสุภาพ <br>
-    <input type="radio" name="choice1" value="ค"> ค. เงียบ และไม่พูดอะไรเลย <br>
+    <input type="radio" name="choice1" value="ก"> ก. พูดแทรกทันทีด้วยน้ำเสียงไม่พอใจ <br>
+    <input type="radio" name="choice1" value="ข"> ข. ฟังจนเพื่อนพูดจบ แล้วค่อยอธิบายมุมมองคุณเองอย่างสุภาพ <br>
+    <input type="radio" name="choice1" value="ค"> ค. เงียบและไม่พูดอะไรเลย <br>
     <input type="radio" name="choice1" value="ง"> ง. แสดงสีหน้านิ่งเฉย และหันไปพูดกับเพื่อนที่นั่งอยู่ด้านข้างแทน <br><br>
 
-    <label>2. จากคำตอบของคุณในข้อที่ 1 คุณจะทำอย่างไรต่อ?</label><br>
-    <input type="radio" name="choice2" value="ก"> ก. ขอบคุณเพื่อนที่รับฟังมุมมองของคุณ <br>
+    <label>2. ต่อไปคุณจะทำอย่างไร?</label><br>
+    <input type="radio" name="choice2" value="ก"> ก. ขอบคุณเพื่อนที่ฟังมุมมองของเรา <br>
     <input type="radio" name="choice2" value="ข"> ข. บอกเพื่อนว่าคุณโกรธอยู่ และไม่อยากคุยแล้ว <br>
     <input type="radio" name="choice2" value="ค"> ค. เดินออกจากกลุ่ม <br>
     <input type="radio" name="choice2" value="ง"> ง. พูดต่อว่าเพื่อนคนนั้น และไม่ยอมรับฟังข้อเสนอแนะที่เพื่อนพูดมา <br><br>
 
     <label>3. คุณคิดว่าการฟังเพื่อนพูดจนจบสำคัญอย่างไร?</label><br>
-    <input type="radio" name="choice3" value="ก"> ก. ทำให้เข้าใจความรู้สึก และแนวคิดของเพื่อนดีขึ้น <br>
+    <input type="radio" name="choice3" value="ก"> ก. ทำให้เข้าใจความรู้สึกและแนวคิดของเพื่อนดีขึ้น <br>
     <input type="radio" name="choice3" value="ข"> ข. ช่วยสร้างความสัมพันธ์ที่แน่นแฟ้นและไว้ใจได้ <br>
-    <input type="radio" name="choice3" value="ค"> ค. ทำให้เพื่อนรู้สึกว่าตนเองมีค่า และได้รับการยอมรับ <br>
-    <input type="radio" name="choice3" value="ง"> ง. ช่วยให้เราสามารถให้คำแนะนำ หรือช่วยแก้ปัญหาได้ตรงจุด <br><br>
+    <input type="radio" name="choice3" value="ค"> ค. ทำให้เพื่อนรู้สึกว่าตนเองมีค่าและได้รับการยอมรับ <br>
+    <input type="radio" name="choice3" value="ง"> ง. ช่วยให้เราสามารถให้คำแนะนำหรือช่วยแก้ปัญหาได้ตรงจุด <br><br>
 
     <label>4. ถ้าเพื่อนไม่ยอมฟังคุณเลย คุณจะทำอย่างไร?</label><br>
     <input type="radio" name="choice4" value="ก"> ก. พยายามอธิบายใหม่อย่างสุภาพ <br>
@@ -105,7 +180,7 @@ input[type="radio"] { margin: 8px 10px 8px 0; }
     <input type="radio" name="choice4" value="ค"> ค. เดินออกจากกลุ่ม <br>
     <input type="radio" name="choice4" value="ง"> ง. คิดว่าคำตอบของคุณถูกต้องที่สุด <br><br>
 
-    <label>5. คุณคิดว่าทักษะการสื่อสาร ช่วยพัฒนาความสัมพันธ์ระหว่างบุคคลได้อย่างไร?</label><br>
+    <label>5. คุณคิดว่าทักษะการสื่อสารช่วยพัฒนาความสัมพันธ์ระหว่างเพื่อนเป็นอย่างไร?</label><br>
     <input type="radio" name="choice5" value="ก"> ก. ทำให้เข้าใจความคิดและความรู้สึกของเพื่อนมากขึ้น <br>
     <input type="radio" name="choice5" value="ข"> ข. ช่วยลดความเข้าใจผิดและความขัดแย้ง <br>
     <input type="radio" name="choice5" value="ค"> ค. ทำให้เพื่อนรู้สึกเชื่อใจและอยากคุยด้วย <br>
@@ -135,15 +210,15 @@ document.getElementById("quizForm").addEventListener("submit", function(e){
   let image = "";
 
   if (choices.choice1 === "ข" && choices.choice2 === "ก") {
-    feedback = "ยอดเยี่ยมมาก!👍 คุณฟังจนจบและขอบคุณเพื่อน ทำให้สถานการณ์คลี่คลายได้";
+    feedback = "ยอดเยี่ยมมาก! 👍 คุณฟังจนจบและขอบคุณเพื่อน ทำให้สถานการณ์คลี่คลายได้";
     image = "images/success.png";
   } 
   else if (choices.choice1 === "ข" && choices.choice2 !== "ก") {
-    feedback = "คุณทำได้ดีมาก👏 คุณฟังจนจบและพูดอย่างสุภาพ คุณลองเพิ่มคำขอบคุณ เพื่อบรรยากาศที่ดียิ่งขึ้นดูสิ";
+    feedback = "คุณทำได้ดีมาก 👏 คุณฟังจนจบและพูดอย่างสุภาพ คุณลองเพิ่มคำขอบคุณ เพื่อบรรยากาศที่ดียิ่งขึ้นดูสิ";
     image = "images/positive.png";
   } 
   else if (choices.choice1 === "ก" || choices.choice2 === "ง") {
-    feedback = "บางครั้งอารมณ์ทำให้เราอยากโต้ตอบ😠 ลองฟังให้จบและพูดคุยด้วยเหตุผล ความสัมพันธ์จะดีขึ้น";
+    feedback = "บางครั้งอารมณ์ทำให้เราอยากโต้ตอบ 😠 ลองฟังให้จบและพูดคุยด้วยเหตุผล ความสัมพันธ์จะดีขึ้น";
     image = "images/calm.png";
   } 
   else if (choices.choice2 === "ค" || choices.choice4 === "ค") {
@@ -183,7 +258,29 @@ document.getElementById("quizForm").addEventListener("submit", function(e){
   });
 
 });
+
+   const modal = document.getElementById('imgModal');
+  const img = document.getElementById('myImage');
+  const modalImg = document.getElementById('imgModalContent');
+  const caption = document.getElementById('imgCaption');
+  const closeBtn = document.getElementsByClassName('img-close')[0];
+
+  img.onclick = function() {
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    caption.innerHTML = this.alt;
+  }
+
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // ปิด modal เมื่อคลิกที่พื้นหลัง
+  modal.onclick = function(e) {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  }
 </script>
 </body>
 </html>
-
